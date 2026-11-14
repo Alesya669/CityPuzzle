@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CityPuzzle — прогулочные маршруты по Краснодару.">
+    <title>CityPuzzle — открой Краснодар заново</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+<header class="header">
+    <a href="#" class="logo" aria-label="CityPuzzle — главная">City<span>Puzzle</span></a>
+
+    <nav class="navigation" aria-label="Основная навигация">
+        <a href="#routes">Маршруты</a>
+        <a href="#about">О проекте</a>
+    </nav>
+
+    <div class="header-actions" id="header-actions">
+        <button type="button" class="auth-button" id="open-login">Войти</button>
+        <button type="button" class="auth-button" id="open-register">Регистрация</button>
+        <a href="#routes" class="header-button">Найти прогулку</a>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-content">
+            <p class="eyebrow">ТВОЙ ГОРОД — ТВОЁ ПРИКЛЮЧЕНИЕ</p>
+            <h1>Открой Краснодар<br>с <span>новой стороны</span></h1>
+            <p class="hero-description">
+                Находи интересные места Краснодара, исследуй необычные маршруты
+                и создавай собственные истории.
+            </p>
+            <a href="#routes" class="primary-button">Исследовать маршруты →</a>
+
+            <div class="hero-stats">
+                <div><strong>Краснодар</strong><span>город прогулок</span></div>
+                <div><strong>3 идеи</strong><span>для знакомства с городом</span></div>
+                <div><strong>Твои места</strong><span>твои впечатления</span></div>
+            </div>
+        </div>
+
+        <div class="hero-image" role="img" aria-label="Городской пейзаж">
+            <div class="image-label">
+                <span>✦</span>
+                <div><strong>Город ждёт тебя</strong><p>Выбери направление</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="routes-section" id="routes">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">ВЫБИРАЙ СВОЙ ПУТЬ</p>
+                <h2>Маршруты Краснодара</h2>
+                <p>Идеи для прогулок, которые запомнятся.</p>
+            </div>
+        </div>
+
+        <div class="route-controls">
+            <input type="search" id="search-input"
+                   placeholder="🔍 Найти маршрут или место..."
+                   aria-label="Поиск маршрутов">
+
+            <select id="duration-filter" aria-label="Фильтр по длительности">
+                <option value="all">Любая длительность</option>
+                <option value="short">До 1 часа</option>
+                <option value="medium">1–2 часа</option>
+                <option value="long">Более 2 часов</option>
+            </select>
+
+            <select id="sort-select" aria-label="Сортировка маршрутов">
+                <option value="popular">По популярности</option>
+                <option value="rating">По рейтингу</option>
+                <option value="duration">По длительности</option>
+            </select>
+        </div>
+
+        <div class="route-grid" id="route-grid"></div>
+        <p class="results-message" id="results-message" aria-live="polite"></p>
+    </section>
+
+    <section class="about-section" id="about">
+        <p class="eyebrow">ОТКРЫВАЙ БОЛЬШЕ</p>
+        <h2>Не просто гуляй. Исследуй.</h2>
+        <p>
+            CityPuzzle помогает находить интересные места Краснодара,
+            выбирать прогулки по своим предпочтениям и открывать неожиданные
+            стороны знакомого города.
+        </p>
+    </section>
+</main>
+
+<footer class="footer">
+    <a href="#" class="logo">City<span>Puzzle</span></a>
+    <p>Открой свой город заново.</p>
+    <p>© 2026 CityPuzzle</p>
+</footer>
+
+<div class="auth-overlay" id="register-overlay" hidden>
+    <section class="auth-modal" role="dialog" aria-modal="true"
+             aria-labelledby="auth-title">
+
+        <button type="button" class="auth-close" id="close-register"
+                aria-label="Закрыть">&times;</button>
+
+        <p class="eyebrow" id="auth-eyebrow">ПРИСОЕДИНЯЙСЯ К НАМ</p>
+        <h2 id="auth-title">Создай аккаунт</h2>
+        <p class="auth-description" id="auth-description">
+            Сохраняй любимые маршруты и делись своими прогулками.
+        </p>
+
+        <form id="register-form">
+            <div id="username-field">
+                <label for="register-username">Имя пользователя</label>
+                <input id="register-username" name="username" type="text"
+                       minlength="3" maxlength="30" autocomplete="username">
+            </div>
+
+            <label for="register-email">Электронная почта</label>
+            <input id="register-email" name="email" type="email"
+                   autocomplete="email" required>
+
+            <label for="register-password">Пароль</label>
+            <input id="register-password" name="password" type="password"
+                   minlength="8" autocomplete="new-password" required>
+
+            <button type="submit" class="primary-button auth-submit"
+                    id="auth-submit">
+                Зарегистрироваться
+            </button>
+
+            <p id="register-message" class="auth-message"
+               role="status" aria-live="polite"></p>
+        </form>
+
+        <p class="auth-switch" id="auth-switch">
+            Уже есть аккаунт?
+            <button type="button" id="switch-to-login">Войти</button>
+        </p>
+    </section>
+</div>
+</body>
+</html>

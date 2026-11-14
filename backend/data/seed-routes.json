@@ -1,0 +1,425 @@
+{
+  "routes": [
+    {
+      "title": "Парк Краснодар",
+      "city": "Краснодар",
+      "category": "Арт-объекты",
+      "description": "Фонтаны, инсталляции, амфитеатр и смотровая площадка парка Краснодар.",
+      "image_url": null,
+      "points": [
+        {
+          "title": "Фонтан",
+          "description": null,
+          "address": null,
+          "latitude": 45.038881,
+          "longitude": 39.028406,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 41,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": "https://2gis.ru/krasnodar/geo/70030076178440423"
+        },
+        {
+          "title": "Фонтан Три струи",
+          "description": null,
+          "address": null,
+          "latitude": 45.038832,
+          "longitude": 39.029079,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 28,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": "https://2gis.ru/krasnodar/geo/70030076178440428"
+        },
+        {
+          "title": "Декоративное сооружение Внутренний ребёнок",
+          "description": null,
+          "address": null,
+          "latitude": 45.039416,
+          "longitude": 39.028897,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 293,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": "https://2gis.ru/krasnodar/geo/70030076280211968"
+        },
+        {
+          "title": "Французский сад",
+          "description": null,
+          "address": null,
+          "latitude": 45.039587,
+          "longitude": 39.029335,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 85,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": null
+        },
+        {
+          "title": "Арт-объект Объятия человечества",
+          "description": null,
+          "address": null,
+          "latitude": 45.039905,
+          "longitude": 39.028761,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 7,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": "https://2gis.ru/krasnodar/geo/70030076280004966"
+        },
+        {
+          "title": "Декоративный объект",
+          "description": null,
+          "address": null,
+          "latitude": 45.039446,
+          "longitude": 39.03145,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 53,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": "https://2gis.ru/krasnodar/geo/70030076150316042"
+        },
+        {
+          "title": "Фонтан",
+          "description": null,
+          "address": null,
+          "latitude": 45.041754,
+          "longitude": 39.031633,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 114,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": "https://2gis.ru/krasnodar/geo/70030076189996775"
+        },
+        {
+          "title": "Инсталляция Искусственная среда",
+          "description": null,
+          "address": null,
+          "latitude": 45.04178,
+          "longitude": 39.031965,
+          "rating_2gis": 4.9,
+          "ratings_count_2gis": 167,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": null
+        },
+        {
+          "title": "Инсталляция Абстракта",
+          "description": null,
+          "address": null,
+          "latitude": 45.042547,
+          "longitude": 39.032187,
+          "rating_2gis": 4.9,
+          "ratings_count_2gis": 39,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": "https://2gis.ru/krasnodar/geo/70030076201918612"
+        },
+        {
+          "title": "Фонтан Бугенвиллия",
+          "description": null,
+          "address": null,
+          "latitude": 45.043079,
+          "longitude": 39.031365,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 171,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": null
+        },
+        {
+          "title": "Фонтан Кратер",
+          "description": null,
+          "address": null,
+          "latitude": 45.043345,
+          "longitude": 39.032395,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 175,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": "https://2gis.ru/krasnodar/geo/70030076898036577"
+        },
+        {
+          "title": "Значимые деревья Делоникс королевский",
+          "description": null,
+          "address": null,
+          "latitude": 45.043059,
+          "longitude": 39.033663,
+          "rating_2gis": 3.3,
+          "ratings_count_2gis": 7,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": "https://2gis.ru/krasnodar/geo/70030076201995075"
+        },
+        {
+          "title": "Фонтан Стремительная река",
+          "description": null,
+          "address": null,
+          "latitude": 45.043787,
+          "longitude": 39.033666,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 213,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": "https://2gis.ru/krasnodar/geo/70030076201995119"
+        },
+        {
+          "title": "Фонтан Инфинити",
+          "description": null,
+          "address": null,
+          "latitude": 45.044159,
+          "longitude": 39.031571,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 318,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": "https://2gis.ru/krasnodar/geo/70030076201918807"
+        },
+        {
+          "title": "Декоративное сооружение Водный лабиринт",
+          "description": null,
+          "address": null,
+          "latitude": 45.042031,
+          "longitude": 39.034064,
+          "rating_2gis": 4.9,
+          "ratings_count_2gis": 101,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": "https://2gis.ru/krasnodar/geo/70030076149102299"
+        },
+        {
+          "title": "Амфитеатр",
+          "description": null,
+          "address": null,
+          "latitude": 45.041748,
+          "longitude": 39.035101,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 61,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": "https://2gis.ru/krasnodar/geo/70030076979038043"
+        },
+        {
+          "title": "Декоративное сооружение Музыкальный лабиринт",
+          "description": null,
+          "address": null,
+          "latitude": 45.041126,
+          "longitude": 39.0346,
+          "rating_2gis": 4.9,
+          "ratings_count_2gis": 167,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": "https://2gis.ru/krasnodar/geo/70030076149102366"
+        },
+        {
+          "title": "Смотровая площадка Пирамида",
+          "description": null,
+          "address": null,
+          "latitude": 45.041311,
+          "longitude": 39.033459,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 526,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": "https://2gis.ru/krasnodar/geo/70030076149039498"
+        }
+      ]
+    },
+    {
+      "title": "Соборы центра Краснодара",
+      "city": "Краснодар",
+      "category": "Храмы",
+      "description": "Три главных собора центра города: Александро-Невский, Екатерининский и Свято-Троицкий.",
+      "image_url": null,
+      "points": [
+        {
+          "title": "Войсковой собор святого благоверного князя Александра Невского",
+          "description": null,
+          "address": "Постовая улица, 26, Краснодар",
+          "latitude": 45.014045,
+          "longitude": 38.966634,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 261,
+          "hours": "Закрыто до завтра",
+          "photo_url": null,
+          "gis_url": null
+        },
+        {
+          "title": "Свято-Екатерининский кафедральный собор",
+          "description": null,
+          "address": "Улица Коммунаров, 52, Краснодар",
+          "latitude": 45.020595,
+          "longitude": 38.974173,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 880,
+          "hours": "Закрыто до завтра",
+          "photo_url": null,
+          "gis_url": null
+        },
+        {
+          "title": "Свято-Троицкий собор",
+          "description": null,
+          "address": "Фрунзе, 65, Краснодар",
+          "latitude": 45.030251,
+          "longitude": 38.962561,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 265,
+          "hours": "Закрыто до завтра",
+          "photo_url": null,
+          "gis_url": null
+        }
+      ]
+    },
+    {
+      "title": "Парк «Солнечный остров»",
+      "city": "Краснодар",
+      "category": "Парки",
+      "description": "Экотропа «Растения вокруг нас», аллея в честь 200-летия Кубанского казачьего хора и сам парк.",
+      "image_url": null,
+      "points": [
+        {
+          "title": "Начало экотропы Растения вокруг нас",
+          "description": null,
+          "address": "Парк Солнечный остров, Карасунский округ, Краснодар",
+          "latitude": 45.010541,
+          "longitude": 39.053229,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 1,
+          "hours": "Круглосуточно (парк)",
+          "photo_url": null,
+          "gis_url": null
+        },
+        {
+          "title": "Аллея в честь 200-летия Кубанского казачьего хора",
+          "description": null,
+          "address": "Парк Солнечный остров, Карасунский округ, Краснодар",
+          "latitude": 45.010424,
+          "longitude": 39.052951,
+          "rating_2gis": null,
+          "ratings_count_2gis": null,
+          "hours": "Круглосуточно (парк)",
+          "photo_url": null,
+          "gis_url": null
+        },
+        {
+          "title": "Солнечный остров",
+          "description": null,
+          "address": "Парк, Карасунский округ, Краснодар",
+          "latitude": 45.005749,
+          "longitude": 39.057858,
+          "rating_2gis": 4.9,
+          "ratings_count_2gis": 4112,
+          "hours": "06:00–22:00 / 10:00–22:00 / круглосуточно (по разным источникам)",
+          "photo_url": null,
+          "gis_url": null
+        }
+      ]
+    },
+    {
+      "title": "Гастротур «Малая Азия»",
+      "city": "Краснодар",
+      "category": "Гастрономия",
+      "description": "Гастрономический маршрут по Краснодару: заведения на Красной и Рашпилевской улицах.",
+      "image_url": null,
+      "duration_minutes": 180,
+      "points": [
+        {
+          "title": "Такуки",
+          "description": null,
+          "address": "Красная улица, 182 (1 этаж)",
+          "latitude": null,
+          "longitude": null,
+          "rating_2gis": 4.9,
+          "ratings_count_2gis": 2175,
+          "hours": "Пн–Вс: 12:00–24:00",
+          "photo_url": null,
+          "gis_url": null
+        },
+        {
+          "title": "Хаяо Унесённые Азией",
+          "description": null,
+          "address": "Красная улица, 176 к7",
+          "latitude": null,
+          "longitude": null,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 2477,
+          "hours": "Пн–Пт: 10:00–24:00; Сб–Вс: 08:00–24:00",
+          "photo_url": null,
+          "gis_url": null
+        },
+        {
+          "title": "ТокПок",
+          "description": null,
+          "address": "Рашпилевская улица, 130/1",
+          "latitude": null,
+          "longitude": null,
+          "rating_2gis": null,
+          "ratings_count_2gis": null,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": null
+        },
+        {
+          "title": "Tori ramen",
+          "description": null,
+          "address": "Красная улица, 172/1",
+          "latitude": null,
+          "longitude": null,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 311,
+          "hours": null,
+          "photo_url": null,
+          "gis_url": null
+        },
+        {
+          "title": "Тай дай",
+          "description": null,
+          "address": "Красная улица, 77 (цокольный этаж)",
+          "latitude": null,
+          "longitude": null,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 2474,
+          "hours": "Пн–Вс: 11:00–23:00",
+          "photo_url": null,
+          "gis_url": null
+        },
+        {
+          "title": "Билли",
+          "description": null,
+          "address": "Красная улица, 72 (1 этаж)",
+          "latitude": null,
+          "longitude": null,
+          "rating_2gis": 5.0,
+          "ratings_count_2gis": 311,
+          "hours": "Пн–Пт: 10:00–22:00; Сб–Вс: 10:00–23:00",
+          "photo_url": null,
+          "gis_url": null
+        },
+        {
+          "title": "MotiMoti",
+          "description": null,
+          "address": "Красная улица, 72 (1 этаж)",
+          "latitude": null,
+          "longitude": null,
+          "rating_2gis": 4.7,
+          "ratings_count_2gis": 237,
+          "hours": "Пн–Вс: 10:00–22:00",
+          "photo_url": null,
+          "gis_url": null
+        },
+        {
+          "title": "Чико",
+          "description": null,
+          "address": "Рашпилевская улица, 20/1 (1 этаж)",
+          "latitude": null,
+          "longitude": null,
+          "rating_2gis": 4.9,
+          "ratings_count_2gis": 3615,
+          "hours": "Пн–Вс: 11:00–22:00",
+          "photo_url": null,
+          "gis_url": null
+        }
+      ]
+    }
+  ]
+}
