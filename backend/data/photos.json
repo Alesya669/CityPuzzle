@@ -3,7 +3,7 @@
   "routes": [
     {
       "title": "Парк Краснодар",
-      "image": "",
+      "image": "photos/park-krasnodar.jpg",
       "points": [
         {
           "order": 1,
@@ -99,7 +99,7 @@
     },
     {
       "title": "Соборы центра Краснодара",
-      "image": "",
+      "image": "photos/hramy.jpg",
       "points": [
         {
           "order": 1,
@@ -120,7 +120,7 @@
     },
     {
       "title": "Парк «Солнечный остров»",
-      "image": "",
+      "image": "photos/solnechny-ostrov.jpg",
       "points": [
         {
           "order": 1,
@@ -141,7 +141,7 @@
     },
     {
       "title": "Гастротур «Малая Азия»",
-      "image": "",
+      "image": "photos/gastrotur.jpg",
       "points": [
         {
           "order": 1,

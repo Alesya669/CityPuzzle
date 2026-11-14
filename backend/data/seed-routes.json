@@ -5,7 +5,7 @@
       "city": "Краснодар",
       "category": "Арт-объекты",
       "description": "Фонтаны, инсталляции, амфитеатр и смотровая площадка парка Краснодар.",
-      "image_url": null,
+      "image_url": "photos/park-krasnodar.jpg",
       "points": [
         {
           "title": "Фонтан",
@@ -230,7 +230,7 @@
       "city": "Краснодар",
       "category": "Храмы",
       "description": "Три главных собора центра города: Александро-Невский, Екатерининский и Свято-Троицкий.",
-      "image_url": null,
+      "image_url": "photos/hramy.jpg",
       "points": [
         {
           "title": "Войсковой собор святого благоверного князя Александра Невского",
@@ -275,7 +275,7 @@
       "city": "Краснодар",
       "category": "Парки",
       "description": "Экотропа «Растения вокруг нас», аллея в честь 200-летия Кубанского казачьего хора и сам парк.",
-      "image_url": null,
+      "image_url": "photos/solnechny-ostrov.jpg",
       "points": [
         {
           "title": "Начало экотропы Растения вокруг нас",
@@ -320,7 +320,7 @@
       "city": "Краснодар",
       "category": "Гастрономия",
       "description": "Гастрономический маршрут по Краснодару: заведения на Красной и Рашпилевской улицах.",
-      "image_url": null,
+      "image_url": "photos/gastrotur.jpg",
       "duration_minutes": 180,
       "points": [
         {
