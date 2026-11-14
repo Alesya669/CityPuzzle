@@ -122,4 +122,13 @@ async function loadRoute() {
         if (!response.ok) throw new Error(data.error || "Не удалось загрузить маршрут");
 
         renderRoute(data.route);
-    } catc
+    } catch (error) {
+        showMessage(
+            error.message === "Failed to fetch"
+                ? "Не удалось связаться с сервером. Проверь, запущен ли backend."
+                : error.message
+        );
+    }
+}
+
+loadRoute();
