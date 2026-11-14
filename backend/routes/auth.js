@@ -2,15 +2,27 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const db = require("../database/db");
+const { createSession, readToken, deleteSession, requireAuth } = require("../middleware/auth");
 
 const router = express.Router();
 
 router.post("/register", (req, res) => {
     const { username, email, password } = req.body;
 
-    if (!username || !email || !password) {
+    if (
+        typeof username !== "string" ||
+        typeof email !== "string" ||
+        typeof password !== "string" ||
+        !username.trim() || !email.trim() || !password
+    ) {
         return res.status(400).json({
             error: "Заполни имя пользователя, email и пароль"
+        });
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+        return res.status(400).json({
+            error: "Введи корректный email"
         });
     }
 
@@ -37,7 +49,10 @@ router.post("/register", (req, res) => {
             }
         });
     } catch (error) {
-        if (error.code === "SQLITE_CONSTRAINT_UNIQUE") {
+        if (
+            error.code === "SQLITE_CONSTRAINT_UNIQUE" ||
+            /UNIQUE constraint failed/.test(String(error.message))
+        ) {
             return res.status(409).json({
                 error: "Такое имя пользователя или email уже зарегистрированы"
             });
@@ -69,7 +84,7 @@ router.post("/login", async (req, res) => {
             SELECT id, username, email, password_hash, role
             FROM users
             WHERE email = ?
-        `).get(email.trim());
+        `).get(email.trim().toLowerCase());
 
         if (!user) {
             return res.status(401).json({
@@ -90,6 +105,7 @@ router.post("/login", async (req, res) => {
 
         res.json({
             message: "Вход выполнен успешно",
+            token: createSession(user.id),
             user: {
                 id: user.id,
                 username: user.username,
@@ -104,6 +120,16 @@ router.post("/login", async (req, res) => {
             error: "Ошибка сервера при входе"
         });
     }
+});
+
+router.get("/me", requireAuth, (req, res) => {
+    res.json({ user: req.user });
+});
+
+router.post("/logout", (req, res) => {
+    const token = readToken(req);
+    if (token) deleteSession(token);
+    res.json({ message: "Вы вышли из аккаунта" });
 });
 
 module.exports = router;

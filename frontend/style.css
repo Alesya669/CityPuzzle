@@ -275,3 +275,37 @@ a.route-card { display: block; color: inherit; }
 @media (max-width: 700px) { .route-page { padding: 28px 5% 60px; } .point-card { grid-template-columns: 1fr; } }
 
 .route-cover { width: 100%; max-height: 360px; object-fit: cover; border-radius: var(--radius); margin-bottom: 28px; }
+
+/* Избранное на карточках */
+.route-card { position: relative; }
+.route-card-link { display: block; color: inherit; }
+.fav-button {
+    position: absolute; top: 12px; right: 12px; z-index: 2;
+    width: 38px; height: 38px; display: grid; place-items: center;
+    border: 0; border-radius: 50%; background: rgba(255,255,255,.95);
+    color: var(--green); font-size: 20px; line-height: 1; cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,.12); transition: transform .2s;
+}
+.fav-button:hover { transform: scale(1.1); }
+.fav-button.active { color: #c0392b; }
+.fav-button:disabled { opacity: .6; cursor: wait; }
+.fav-toggle { display: inline-flex; align-items: center; gap: 8px; margin: -12px 0 22px; font-size: 13px; font-weight: 600; color: var(--green); cursor: pointer; }
+.fav-toggle[hidden] { display: none; }
+
+/* Оценка и избранное на странице маршрута */
+.route-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 28px; padding: 18px 20px; background: white; border: 1px solid var(--border); border-radius: var(--radius); }
+.actions-note { font-size: 13px; color: var(--muted); }
+.actions-note a { color: var(--green); font-weight: 700; }
+.actions-note a:hover { text-decoration: underline; }
+.rate-box { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.rate-label { font-size: 13px; font-weight: 600; }
+.rate-stars { display: flex; gap: 2px; }
+.rate-star { border: 0; background: none; font-size: 26px; line-height: 1; color: #c9ccc3; cursor: pointer; transition: transform .15s; }
+.rate-star:hover { transform: scale(1.15); }
+.rate-star.active { color: #ae7b22; }
+.rate-star:disabled { cursor: wait; }
+.rate-status { font-size: 12px; color: var(--muted); }
+.fav-large { padding: 11px 18px; border: 1px solid var(--green); border-radius: 10px; background: transparent; color: var(--green); font-size: 13px; font-weight: 700; cursor: pointer; transition: background .2s; }
+.fav-large:hover { background: var(--green-light); }
+.fav-large.active { background: var(--green); color: white; }
+.fav-large:disabled { opacity: .6; cursor: wait; }

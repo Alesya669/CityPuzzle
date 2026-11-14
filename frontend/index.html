@@ -7,6 +7,7 @@
     <meta name="description" content="CityPuzzle — прогулочные маршруты по Краснодару.">
     <title>CityPuzzle — открой Краснодар заново</title>
     <link rel="stylesheet" href="style.css">
+    <script src="auth-state.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -78,6 +79,10 @@
                 <option value="duration">По длительности</option>
             </select>
         </div>
+
+        <label class="fav-toggle" id="favorites-filter" hidden>
+            <input type="checkbox" id="favorites-only"> ♥ Только избранное
+        </label>
 
         <div class="route-grid" id="route-grid"></div>
         <p class="results-message" id="results-message" aria-live="polite"></p>

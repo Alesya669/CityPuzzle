@@ -71,6 +71,28 @@ CREATE TABLE IF NOT EXISTS ratings (
 
 db.exec(routePointsSql("route_points"));
 
+db.exec(`
+CREATE TABLE IF NOT EXISTS sessions (
+    token_hash TEXT PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    expires_at TEXT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS favorites (
+    user_id INTEGER NOT NULL,
+    route_id INTEGER NOT NULL,
+    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (user_id, route_id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+        ON DELETE CASCADE,
+    FOREIGN KEY (route_id) REFERENCES routes(id)
+        ON DELETE CASCADE
+);
+`);
+
 // Миграция: координаты точки теперь необязательны (бывают маршруты без координат).
 // В SQLite нельзя снять NOT NULL через ALTER, поэтому пересоздаём таблицу.
 const latitudeColumn = db

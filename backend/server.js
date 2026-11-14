@@ -1,5 +1,6 @@
 const cors = require("cors");
 const express = require("express");
+const path = require("path");
 const db = require("./database/db");
 
 const app = express();
@@ -24,10 +25,14 @@ app.post("/api/test", (req, res) => {
 app.get("/api/health", (req, res) => {
     res.json({
         status: "ok",
-        message: "CityRoutes backend работает!"
+        message: "CityPuzzle backend работает!"
     });
 });
 
+// Сайт открывается по адресу http://localhost:3000 — так вход сохраняется
+// между страницами, а запросы идут на тот же адрес, что и сам сайт.
+app.use(express.static(path.join(__dirname, "..", "frontend")));
+
 app.listen(PORT, () => {
-    console.log(`CityRoutes backend: http://localhost:${PORT}`);
+    console.log(`CityPuzzle backend: http://localhost:${PORT}`);
 });

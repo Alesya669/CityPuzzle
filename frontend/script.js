@@ -1,6 +1,4 @@
 
-const API_URL = "http://localhost:3000/api";
-
 // Маршруты загружаются с сервера (только одобренные модератором)
 let routes = [];
 
@@ -9,6 +7,8 @@ const searchInput = document.getElementById("search-input");
 const durationFilter = document.getElementById("duration-filter");
 const sortSelect = document.getElementById("sort-select");
 const resultsMessage = document.getElementById("results-message");
+const favoritesFilter = document.getElementById("favorites-filter");
+const favoritesOnly = document.getElementById("favorites-only");
 
 function getDurationLabel(minutes) {
     if (minutes < 60) {
@@ -25,10 +25,51 @@ function getDurationLabel(minutes) {
     return `${hours} ч ${remainingMinutes} мин`;
 }
 
+function updateFavoriteButton(button, isFavorite) {
+    button.textContent = isFavorite ? "♥" : "♡";
+    button.classList.toggle("active", isFavorite);
+    button.setAttribute("aria-pressed", String(isFavorite));
+    button.setAttribute(
+        "aria-label",
+        isFavorite ? "Убрать из избранного" : "Добавить в избранное"
+    );
+    button.title = button.getAttribute("aria-label");
+}
+
+async function toggleFavorite(route, button) {
+    if (!getUser()) {
+        openAuthModal("login");
+        registerMessage.textContent = "Войди, чтобы добавлять маршруты в избранное.";
+        return;
+    }
+
+    button.disabled = true;
+
+    try {
+        const result = await apiRequest(`/routes/${route.id}/favorite`, {
+            method: route.isFavorite ? "DELETE" : "PUT"
+        });
+
+        if (result.ok) {
+            route.isFavorite = result.data.isFavorite;
+            updateFavoriteButton(button, route.isFavorite);
+
+            if (favoritesOnly.checked) filterRoutes();
+        }
+    } catch (error) {
+        resultsMessage.textContent = networkErrorMessage(error);
+    } finally {
+        button.disabled = false;
+    }
+}
+
 function createRouteCard(route) {
-    const article = document.createElement("a");
+    const article = document.createElement("article");
     article.className = "route-card";
-    article.href = `route.html?id=${route.id}`;
+
+    const link = document.createElement("a");
+    link.className = "route-card-link";
+    link.href = `route.html?id=${route.id}`;
 
     const imageWrapper = document.createElement("div");
     imageWrapper.className = "route-image";
@@ -90,7 +131,16 @@ function createRouteCard(route) {
 
     meta.append(duration, distance, rating);
     body.append(location, title, description, meta);
-    article.append(imageWrapper, body);
+    link.append(imageWrapper, body);
+
+    const favoriteButton = document.createElement("button");
+    favoriteButton.type = "button";
+    favoriteButton.className = "fav-button";
+    updateFavoriteButton(favoriteButton, route.isFavorite);
+
+    favoriteButton.addEventListener("click", () => toggleFavorite(route, favoriteButton));
+
+    article.append(link, favoriteButton);
 
     return article;
 }
@@ -119,7 +169,9 @@ function filterRoutes() {
             matchesDuration = route.duration > 120;
         }
 
-        return matchesSearch && matchesDuration;
+        const matchesFavorite = !favoritesOnly.checked || route.isFavorite;
+
+        return matchesSearch && matchesDuration && matchesFavorite;
     });
 
     if (sortSelect.value === "rating") {
@@ -139,8 +191,9 @@ function renderRoutes(routesToRender) {
     if (routesToRender.length === 0) {
         const emptyMessage = document.createElement("div");
         emptyMessage.className = "no-results";
-        emptyMessage.textContent =
-            "Маршруты не найдены. Попробуй изменить поисковый запрос или фильтры.";
+        emptyMessage.textContent = favoritesOnly.checked
+            ? "В избранном пока пусто. Нажми ♡ на карточке маршрута."
+            : "Маршруты не найдены. Попробуй изменить поисковый запрос или фильтры.";
 
         routeGrid.append(emptyMessage);
         resultsMessage.textContent = "Найдено маршрутов: 0";
@@ -157,30 +210,25 @@ function renderRoutes(routesToRender) {
 searchInput.addEventListener("input", filterRoutes);
 durationFilter.addEventListener("change", filterRoutes);
 sortSelect.addEventListener("change", filterRoutes);
+favoritesOnly.addEventListener("change", filterRoutes);
 
 async function loadRoutes() {
     resultsMessage.textContent = "Загружаем маршруты...";
 
     try {
-        const response = await fetch(`${API_URL}/routes`);
-        const data = await response.json();
+        const result = await apiRequest("/routes");
 
-        if (!response.ok) {
-            throw new Error(data.error || "Не удалось загрузить маршруты");
+        if (!result.ok) {
+            throw new Error(result.data.error || "Не удалось загрузить маршруты");
         }
 
-        routes = data.routes;
+        routes = result.data.routes;
         filterRoutes();
     } catch (error) {
         routeGrid.replaceChildren();
-        resultsMessage.textContent =
-            error.message === "Failed to fetch"
-                ? "Не удалось связаться с сервером. Проверь, запущен ли backend."
-                : error.message;
+        resultsMessage.textContent = networkErrorMessage(error);
     }
 }
-
-loadRoutes();
 
 
 
@@ -204,7 +252,6 @@ const switchToLoginButton = document.getElementById("switch-to-login");
 const headerActions = document.getElementById("header-actions");
 
 let authMode = "register";
-let currentUser = null;
 
 function openAuthModal(mode) {
     authMode = mode;
@@ -245,6 +292,11 @@ function openAuthModal(mode) {
 function renderHeader() {
     headerActions.replaceChildren();
 
+    const currentUser = getUser();
+
+    favoritesFilter.hidden = !currentUser;
+    if (!currentUser) favoritesOnly.checked = false;
+
     if (currentUser) {
         const greeting = document.createElement("span");
         greeting.className = "user-greeting";
@@ -255,10 +307,14 @@ function renderHeader() {
         logoutButton.className = "auth-button";
         logoutButton.textContent = "Выйти";
 
-        logoutButton.addEventListener("click", () => {
-            currentUser = null;
-            sessionStorage.removeItem("cityroutes-user");
-            renderHeader();
+        logoutButton.addEventListener("click", async () => {
+            try {
+                await apiRequest("/auth/logout", { method: "POST" });
+            } catch {
+                // сервер недоступен — всё равно выходим на этой стороне
+            }
+
+            setAuth(null);
         });
 
         headerActions.append(greeting, logoutButton);
@@ -327,55 +383,48 @@ registerForm.addEventListener("submit", async (event) => {
         : "Регистрируем аккаунт...";
 
     try {
-        const endpoint = authMode === "login"
-            ? `${API_URL}/auth/login`
-            : `${API_URL}/auth/register`;
+        const result = await apiRequest(
+            authMode === "login" ? "/auth/login" : "/auth/register",
+            { method: "POST", body: userData }
+        );
 
-        const response = await fetch(endpoint, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(userData)
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.error || "Не удалось выполнить запрос");
+        if (!result.ok) {
+            throw new Error(result.data.error || "Не удалось выполнить запрос");
         }
 
         if (authMode === "register") {
             registerMessage.textContent =
-                `Аккаунт создан! Добро пожаловать, ${data.user.username}. Теперь войди в аккаунт.`;
+                `Аккаунт создан! Добро пожаловать, ${result.data.user.username}. Теперь войди в аккаунт.`;
 
             registerForm.reset();
             return;
         }
 
-        currentUser = data.user;
-        sessionStorage.setItem("cityroutes-user", JSON.stringify(currentUser));
-
         registerOverlay.hidden = true;
-        renderHeader();
+        setAuth({ token: result.data.token, user: result.data.user });
+
+        // Вернуться на страницу маршрута, откуда пришёл пользователь
+        const next = new URLSearchParams(location.search).get("next");
+
+        if (next && /^route\.html\?id=\d+$/.test(next)) {
+            location.href = next;
+        }
     } catch (error) {
-        registerMessage.textContent =
-            error.message === "Failed to fetch"
-                ? "Не удалось связаться с сервером. Проверь, запущен ли backend."
-                : error.message;
+        registerMessage.textContent = networkErrorMessage(error);
     } finally {
         authSubmit.disabled = false;
     }
 });
 
-// Восстановить отображение пользователя после обновления страницы
-try {
-    const savedUser = sessionStorage.getItem("cityroutes-user");
-    if (savedUser) {
-        currentUser = JSON.parse(savedUser);
-    }
-} catch {
-    sessionStorage.removeItem("cityroutes-user");
-}
+document.addEventListener("auth-changed", () => {
+    renderHeader();
+    loadRoutes();
+});
 
 renderHeader();
+loadRoutes();
+
+// Ссылка вида index.html?auth=login сразу открывает окно входа
+if (new URLSearchParams(location.search).get("auth") === "login" && !getUser()) {
+    openAuthModal("login");
+}
